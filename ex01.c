@@ -24,10 +24,25 @@
 #include <stdio.h>
 #include "bst.h"
 
-/* ---------------------------------------------------------
- * Função específica do exercício
- * --------------------------------------------------------- */
-
+void imprime_faixa_rec(RegInt* p,int k,int l)
+{
+    if (p == NULL)
+    {
+        return;
+    }
+    if (p->info > k)
+    {
+        imprime_faixa_rec(p->esq,k,l);
+    }
+    if (p->info > k && p->info < l)
+    {
+        printf("%d ",p->info);
+    }
+    if (p->info < l)
+    {
+        imprime_faixa_rec(p->dir,k,l);
+    }
+}
 /* TODO: implementar */
 
 /* ---------------------------------------------------------
@@ -37,7 +52,16 @@ int main(void) {
     RegInt *raiz = NULL;
 
     /* Monte aqui a árvore do enunciado */
+        // insira os elementos 3,8,9,10,11,15,20
+        raiz = bst_inserir_no(raiz, 3);
+        raiz = bst_inserir_no(raiz, 8);
+        raiz = bst_inserir_no(raiz, 9);
+        raiz = bst_inserir_no(raiz, 10);
+        raiz = bst_inserir_no(raiz, 11);
+        raiz = bst_inserir_no(raiz, 15);
+        raiz = bst_inserir_no(raiz, 20);
 
+        imprime_faixa_rec(raiz,8,17);
     /* Teste aqui a função do exercício */
 
     bst_liberar_arvore(raiz);
